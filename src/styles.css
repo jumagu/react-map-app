@@ -1,0 +1,15 @@
+.search-container {
+  position: fixed;
+  width: auto;
+  height: auto;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+}
+
+.search-container input {
+  height: auto !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  font-size: 14px !important;
+}
