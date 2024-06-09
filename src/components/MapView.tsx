@@ -26,9 +26,5 @@ export const MapView = () => {
 
   if (isLoading) return <Loading />;
 
-  return (
-    <div ref={mapDiv} style={{ width: "100vw", height: "100vh" }}>
-      {userLocation}
-    </div>
-  );
+  return <div ref={mapDiv} style={{ width: "100vw", height: "100vh" }}></div>;
 };
