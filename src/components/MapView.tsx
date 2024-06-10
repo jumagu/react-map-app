@@ -13,7 +13,7 @@ export const MapView = () => {
   const mapDiv = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && userLocation) {
       const map = new Map({
         container: mapDiv.current!,
         style: "mapbox://styles/mapbox/dark-v11",
@@ -23,9 +23,33 @@ export const MapView = () => {
 
       setMap(map);
     }
-  }, [isLoading]);
+  }, [isLoading, userLocation]);
 
-  if (isLoading) return <Loading />;
+  if (isLoading)
+    return (
+      <Loading
+        containerClassName="pico"
+        containerStyle={{ height: "100vh" }}
+        spinnerStyle={{
+          margin: "0",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      />
+    );
+
+  if (!userLocation)
+    return (
+      <div className="pico location-denied-alert">
+        <p>
+          Sorry, you can't continue if you don't accept to use the browser
+          geolocation :(
+        </p>
+      </div>
+    );
 
   return (
     <div
