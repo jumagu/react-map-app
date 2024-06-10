@@ -25,9 +25,9 @@ export const PlacesProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(placesReducer, initialState);
 
   useEffect(() => {
-    getUserLocation().then((coords) =>
-      dispatch({ type: "setUserLocation", payload: coords })
-    );
+    getUserLocation()
+      .then((coords) => dispatch({ type: "setUserLocation", payload: coords }))
+      .catch(() => dispatch({ type: "setUserLocation", payload: undefined }));
   }, []);
 
   const searchPlacesByTerm = async (searchTerm: string) => {

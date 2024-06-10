@@ -5,7 +5,7 @@ import { Feature } from "../../interfaces/palces.interfaces";
 type PlacesAction =
   | {
       type: "setUserLocation";
-      payload: [number, number];
+      payload: [number, number] | undefined;
     }
   | { type: "setPlaces"; payload: Feature[] }
   | { type: "setIsLoadingPlaces" };
