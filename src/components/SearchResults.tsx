@@ -1,14 +1,17 @@
 import { useContext, useState } from "react";
 
-import { MapContext, PlacesContext } from "../contexts";
+import { MapContext, PlacesContext, UiContext } from "../contexts";
 
 export const SearchResults = () => {
+  const { isResultsBoxVisible, handleResultsBoxVisibility } = useContext(UiContext);
   const { map, getDirections } = useContext(MapContext);
   const { places, isLoadingPlaces, userLocation } = useContext(PlacesContext);
 
   const [activePlace, setActivePlace] = useState("");
 
   const handlePlaceClick = (coords: number[], placeId: string) => {
+    handleResultsBoxVisibility(false);
+
     const [lng, lat] = coords;
 
     map?.flyTo({ zoom: 14, center: [lng, lat] });
@@ -35,7 +38,9 @@ export const SearchResults = () => {
     );
 
   return (
-    <div className="results-container">
+    <div
+      className={`results-container ${!isResultsBoxVisible ? "hidden" : ""}`}
+    >
       <ul className="results-list">
         {places.map(({ id, properties, geometry }) => (
           <li

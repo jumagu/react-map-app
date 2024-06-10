@@ -1,9 +1,10 @@
 import { type ChangeEvent, useRef, useContext } from "react";
 
-import { PlacesContext } from "../contexts";
+import { PlacesContext, UiContext } from "../contexts";
 import { SearchResults } from "./SearchResults";
 
 export const SearchBar = () => {
+  const { handleResultsBoxVisibility } = useContext(UiContext);
   const { searchPlacesByTerm } = useContext(PlacesContext);
 
   const debounceRef = useRef<NodeJS.Timeout>();
@@ -24,6 +25,7 @@ export const SearchBar = () => {
           type="search"
           placeholder="Search for a place"
           onChange={onQueryChange}
+          onFocus={() => handleResultsBoxVisibility(true)}
         />
       </div>
 

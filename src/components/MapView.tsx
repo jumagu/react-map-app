@@ -3,9 +3,10 @@ import { useContext, useLayoutEffect, useRef } from "react";
 import { Map } from "mapbox-gl";
 
 import { Loading } from "./Loading";
-import { MapContext, PlacesContext } from "../contexts";
+import { MapContext, PlacesContext, UiContext } from "../contexts";
 
 export const MapView = () => {
+  const { handleResultsBoxVisibility } = useContext(UiContext);
   const { setMap } = useContext(MapContext);
   const { isLoading, userLocation } = useContext(PlacesContext);
 
@@ -26,5 +27,11 @@ export const MapView = () => {
 
   if (isLoading) return <Loading />;
 
-  return <div ref={mapDiv} style={{ width: "100vw", height: "100vh" }}></div>;
+  return (
+    <div
+      ref={mapDiv}
+      style={{ width: "100vw", height: "100vh" }}
+      onClick={() => handleResultsBoxVisibility(false)}
+    ></div>
+  );
 };
