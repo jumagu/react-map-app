@@ -129,3 +129,7 @@
     top: 20px !important;
   }
 }
+
+.hidden {
+  display: none;
+}
