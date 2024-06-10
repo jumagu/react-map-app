@@ -1,15 +1,19 @@
 .search-container {
   background-color: var(--pico-background-color);
-  border-top-right-radius: 21px;
-  border-top-left-radius: 21px;
-  border-bottom-right-radius: 21px;
-  border-bottom-left-radius: 21px;
+  border-radius: 21px;
   position: fixed;
   width: auto;
-  height: auto;
   top: 20px;
+  right: 20px;
   left: 20px;
   z-index: 999;
+}
+
+@media (min-width: 640px) {
+  .search-container {
+    right: unset;
+    width: 300px;
+  }
 }
 
 .search-container input {
@@ -18,6 +22,11 @@
   padding-bottom: 10px !important;
   font-size: 14px !important;
   margin: 0 !important;
+}
+
+.results-container {
+  overflow-y: scroll;
+  max-height: 300px;
 }
 
 .results-list {
@@ -30,6 +39,7 @@
 .result-item {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
   user-select: none;
   list-style: none;
   padding: 5px 16px;
@@ -58,6 +68,11 @@
   background-color: var(--pico-primary-focus);
 }
 
+.result-item div:nth-child(2) {
+  display: flex;
+  align-items: center;
+}
+
 .result-item h3,
 .result-item p {
   margin: 0;
@@ -74,28 +89,43 @@
 }
 
 .result-item button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 32px;
+  height: 32px;
   cursor: pointer;
-  background-color: transparent;
+  background-color: var(--pico-secondary-background);
   border: none;
   padding: 0;
   margin: 0;
-  border-radius: 5px;
+  border-radius: 100%;
   transition: all 0.3s ease-in-out;
 }
 
 .result-item button:hover {
-  background-color: var(--pico-card-background-color);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
 }
 
-.cls-1,
-.cls-2 {
-  fill: none;
-  stroke: var(--pico-color);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5px;
+.result-item svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--pico-color);
 }
-.cls-1 {
-  fill-rule: evenodd;
+
+.fab-my-location {
+  font-size: 14px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 999 !important;
+}
+
+@media (min-width: 640px) {
+  .fab-my-location {
+    bottom: unset !important;
+    top: 20px !important;
+  }
 }

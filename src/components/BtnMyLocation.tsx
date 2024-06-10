@@ -15,18 +15,7 @@ export const BtnMyLocation = () => {
 
   return (
     <div className="pico">
-      <button
-        style={{
-          fontSize: 14,
-          paddingTop: 10,
-          paddingBottom: 10,
-          position: "fixed",
-          top: "20px",
-          right: "20px",
-          zIndex: 999,
-        }}
-        onClick={onClick}
-      >
+      <button className="fab-my-location" onClick={onClick}>
         My Location
       </button>
     </div>

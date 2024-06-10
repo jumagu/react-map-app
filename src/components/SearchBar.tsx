@@ -20,6 +20,7 @@ export const SearchBar = () => {
     <div className="search-container">
       <div className="pico">
         <input
+          className="search-input"
           type="search"
           placeholder="Search for a place"
           onChange={onQueryChange}
