@@ -45,8 +45,6 @@ export const PlacesProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     dispatch({ type: "setPlaces", payload: response.data.features });
-
-    // return response.data.features;
   };
 
   return (
