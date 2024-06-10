@@ -134,12 +134,12 @@ export const MapProvider = ({ children }: { children: React.ReactNode }) => {
     dispatch({ type: "setMarkers", payload: newMarkers });
   }, [places]);
 
-  // useEffect(() => {
-  //   if (state.map?.getLayer("route") && !places.length) {
-  //     state.map?.removeLayer("route");
-  //     state.map.removeSource("route");
-  //   }
-  // }, [places]);
+  useEffect(() => {
+    if (state.map?.getLayer("route") && !places.length) {
+      state.map?.removeLayer("route");
+      state.map.removeSource("route");
+    }
+  }, [places]);
 
   return (
     <MapContext.Provider value={{ ...state, setMap, getDirections }}>
