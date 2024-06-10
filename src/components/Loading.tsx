@@ -1,5 +1,15 @@
-export const Loading = () => {
+export const Loading = ({
+  spinnerStyle,
+  containerStyle,
+  containerClassName,
+}: {
+  containerClassName?: string;
+  spinnerStyle?: React.CSSProperties;
+  containerStyle?: React.CSSProperties;
+}) => {
   return (
-    <article aria-busy="true" />
-  )
-}
+    <div className={containerClassName} style={containerStyle}>
+      <article aria-busy="true" style={spinnerStyle}></article>
+    </div>
+  );
+};
