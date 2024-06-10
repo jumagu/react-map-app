@@ -5,7 +5,7 @@ import { SearchResults } from "./SearchResults";
 
 export const SearchBar = () => {
   const { handleResultsBoxVisibility } = useContext(UiContext);
-  const { searchPlacesByTerm } = useContext(PlacesContext);
+  const { searchPlacesByTerm, userLocation } = useContext(PlacesContext);
 
   const debounceRef = useRef<NodeJS.Timeout>();
 
@@ -24,6 +24,7 @@ export const SearchBar = () => {
           className="search-input"
           type="search"
           placeholder="Search for a place"
+          disabled={!userLocation}
           onChange={onQueryChange}
           onFocus={() => handleResultsBoxVisibility(true)}
         />

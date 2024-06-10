@@ -18,7 +18,11 @@ export const BtnMyLocation = () => {
 
   return (
     <div className="pico">
-      <button className="fab-my-location" onClick={onClick}>
+      <button
+        className="fab-my-location"
+        onClick={onClick}
+        disabled={!userLocation}
+      >
         My Location
       </button>
     </div>
