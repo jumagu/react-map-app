@@ -1,4 +1,9 @@
-import { BtnMyLocation, MapView, SearchBar } from "../components";
+import {
+  MapView,
+  SearchBar,
+  BtnMyLocation,
+  ColorSchemeSwitcher,
+} from "../components";
 
 export const MainScreen = () => {
   return (
@@ -6,6 +11,7 @@ export const MainScreen = () => {
       <MapView />
       <SearchBar />
       <BtnMyLocation />
+      <ColorSchemeSwitcher className="fab-theme-switcher" />
     </>
   );
 };
