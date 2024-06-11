@@ -37,7 +37,7 @@ export const MapProvider = ({ children }: { children: React.ReactNode }) => {
   const setMap = (map: Map) => {
     const currentLocationPopup = new Popup().setHTML(`
         <h4>I'm here</h4>
-        <p>In the plater earth</p>
+        <p>In this part of the world</p>
       `);
 
     new Marker()
