@@ -11,7 +11,7 @@ import {
 import { MapContext } from "./MapContext";
 import { mapReducer } from "./mapReducer";
 
-import { PlacesContext } from "..";
+import { PlacesContext, ThemeContext } from "..";
 
 import { directionsApi } from "../../apis";
 import { DirectionsResponse } from "../../interfaces/directions.interfaces";
@@ -29,6 +29,7 @@ const initialState: MapState = {
 };
 
 export const MapProvider = ({ children }: { children: React.ReactNode }) => {
+  const { theme } = useContext(ThemeContext);
   const { places } = useContext(PlacesContext);
 
   const [state, dispatch] = useReducer(mapReducer, initialState);
@@ -140,6 +141,12 @@ export const MapProvider = ({ children }: { children: React.ReactNode }) => {
       state.map.removeSource("route");
     }
   }, [places]);
+
+  useEffect(() => {
+    if (state.isMapReady) {
+      state.map?.setStyle(`mapbox://styles/mapbox/${theme}-v11`);
+    }
+  }, [theme]);
 
   return (
     <MapContext.Provider value={{ ...state, setMap, getDirections }}>
