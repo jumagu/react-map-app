@@ -1,14 +1,21 @@
 import { MainScreen } from "./screens";
-import { MapProvider, PlacesProvider, UiProvider } from "./contexts";
+import {
+  UiProvider,
+  MapProvider,
+  ThemeProvider,
+  PlacesProvider,
+} from "./contexts";
 
 export default function MapsApp() {
   return (
-    <UiProvider>
-      <PlacesProvider>
-        <MapProvider>
-          <MainScreen />
-        </MapProvider>
-      </PlacesProvider>
-    </UiProvider>
+    <ThemeProvider>
+      <UiProvider>
+        <PlacesProvider>
+          <MapProvider>
+            <MainScreen />
+          </MapProvider>
+        </PlacesProvider>
+      </UiProvider>
+    </ThemeProvider>
   );
 }
