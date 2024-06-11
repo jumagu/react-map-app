@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import { MapContext, PlacesContext, UiContext } from "../contexts";
+import { IconLocation } from "../icons";
 
 export const BtnMyLocation = () => {
   const { handleResultsBoxVisibility } = useContext(UiContext);
@@ -23,7 +24,7 @@ export const BtnMyLocation = () => {
         onClick={onClick}
         disabled={!userLocation}
       >
-        My Location
+        <IconLocation />
       </button>
     </div>
   );
